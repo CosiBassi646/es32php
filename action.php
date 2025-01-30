@@ -16,20 +16,19 @@
   </head>
   <body>
     <h1>Il tuo punteggio:</h1>
-    
     <?php
         $nomeGioco = $_GET['nomeGioco'];
         $punteggio = $_GET['punteggio'];
-        $infoUtente = array($nomeGioco, $punteggio);
-        $infoUtenti = $_SESSION['punteggiUtenti'];
-        array_push($infoUtenti, $infoUtente);
-        $_SESSION['punteggiUtenti'] = $infoUtenti;
-
+        if (isset($_SESSION['punteggiUtenti'][$nomeGioco])) {
+          $_SESSION['punteggiUtenti'][$nomeGioco] = max($_SESSION['punteggiUtenti'][$nomeGioco], $punteggio);
+        }else{
+          $_SESSION['punteggiUtenti'][$nomeGioco] = $punteggio;
+        }
     ?>
      <div class="w-50 mx-auto my-auto text-center">
           <table class="table text-center table-bordered">
               <tr>
-                  <th>videogiocho:</th>
+                  <th>videogioco:</th>
                   <th>Punteggio:</th>
               </tr>
                 <tr>
