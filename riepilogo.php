@@ -11,7 +11,7 @@
   </head>
   <body>
     <h1>Lista dei videogiochi</h1>
-    <ul>
+    <ul class="list-group">
         <?php
             $infoUtenti = $_SESSION['punteggiUtenti'];
             for($i=0;$i<count($infoUtenti);$i++){      

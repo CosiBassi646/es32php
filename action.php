@@ -20,8 +20,12 @@
     <?php
         $nomeGioco = $_GET['nomeGioco'];
         $punteggio = $_GET['punteggio'];
-        $infoUtente = array($nomeGioco, $punteggio);
         $infoUtenti = $_SESSION['punteggiUtenti'];
+        for($i=0;$i<count($infoUtenti);$i++){
+            if(in_array($nomeGioco,$infoUtenti[$i])){
+                array_pop($infoUtenti[$i],$infoUtenti);
+            }
+        }
         array_push($infoUtenti, $infoUtente);
         $_SESSION['punteggiUtenti'] = $infoUtenti;
 
@@ -29,7 +33,7 @@
      <div class="w-50 mx-auto my-auto text-center">
           <table class="table text-center table-bordered">
               <tr>
-                  <th>videogiocho:</th>
+                  <th>videogioco:</th>
                   <th>Punteggio:</th>
               </tr>
                 <tr>
